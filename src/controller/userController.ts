@@ -22,6 +22,8 @@ import ErrorMessageEnum from '../utils/messages';
 
 const storeUser = new userStore();
 
+interface MyFile extends Express.Multer.File {}
+
 export default class userController {
   public async create(req: Request, res: Response) {
     const schema = Joi.object().keys({
@@ -161,7 +163,7 @@ export default class userController {
   public async storeMultiImages(req: Request, res: Response) {
     const imageUrlList = [];
 
-    for (let i = 0; i < req.files.length; i++) {
+    for (let i: number = 0; i < (req.files.length as number); i++) {
       const files = req.files[i];
 
       // and get image url as response

@@ -12,13 +12,13 @@ export default class userStore {
 
         let user:userInterface;
 
-        try{
+        try {
 
-        user = await userModel.create(attributes);
+            user = await userModel.create(attributes);
 
-        return user;
+            return user;
 
-        }catch(e){
+        } catch(e){
 
             console.log(e);
             
@@ -27,13 +27,13 @@ export default class userStore {
 
     async findByEmail(email:string){
 
-        try{
+        try {
 
             const user = await userModel.findOne({email});
 
             return user;
 
-        }catch(e){
+        } catch(e) {
             
             console.log(e);
             
@@ -45,13 +45,13 @@ export default class userStore {
 
         let files:multiImages;
 
-        try{
+        try {
 
-        files = await imagesModel.create(file);
+            files = await imagesModel.create(file);
 
-        return files;
+            return files;
 
-        }catch(e){
+        } catch(e) {
 
             console.log(e);
             

@@ -33,7 +33,7 @@ export default class App {
             useUnifiedTopology: true,
             useNewUrlParser: true,
 
-        }as ConnectOptions).then(() => {
+        } as ConnectOptions).then(() => {
             console.log("info->","Connected to mongoDB....");
         }).catch((e) => {
             console.log("info","There was and error to connect to mongodb");

@@ -52,14 +52,14 @@ const config = process.env;
 
 // for image upload 
 
-      const storage = multer.diskStorage({
-          destination: function (req, file, cb) {
-             cb(null, 'public/uploads/');
-          },
-          filename: function (req, file, cb) {
-             cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-          }
-       });
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+       cb(null, 'public/uploads/');
+    },
+    filename: function (req, file, cb) {
+       cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+ });
   
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const fileFilter = (req: Request, file: any, cb: any) => {
@@ -73,7 +73,8 @@ const fileFilter = (req: Request, file: any, cb: any) => {
     cb(new Error());
   }
 
-    const array_of_allowed_file_types = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif'];
+  const array_of_allowed_file_types = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif'];
+
   if (!array_of_allowed_file_types.includes(file.memetype)) {
     console.log('Invalid file');
   }
@@ -88,6 +89,7 @@ const upload = multer({ storage: storage, fileFilter:fileFilter }).single('image
 const multiupload = multer({ storage: storage }).array('userPhoto',9);
 
 export const auth = {
-
-  upload,verifyToken,multiupload
+  upload,
+  verifyToken,
+  multiupload
 }
